@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { RadioFacade } from '@sdj/ng/core/radio/application-services';
 import { environment } from '@sdj/ng/core/shared/domain';
 import { merge, Observable, of, Subject } from 'rxjs';
-import { first, map, switchMap, takeUntil } from 'rxjs/operators';
+import { first, map, switchMap, takeUntil, tap } from 'rxjs/operators';
 
 @Injectable()
 export class RadioPresenter {

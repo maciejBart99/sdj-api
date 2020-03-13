@@ -95,9 +95,10 @@
       2,
       'always',
       [
-        'sdj',
         'backend',
-        'ng'
+        'electron',
+        'ng',
+        'sdj'
       ]
     ]
   },

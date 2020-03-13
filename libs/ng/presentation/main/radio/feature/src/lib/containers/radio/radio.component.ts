@@ -131,12 +131,12 @@ export class RadioComponent implements OnInit, OnDestroy, AfterViewInit {
         this.selectedChannelUnsubscribe = this.radioPresenter.recreateSubject(
           this.selectedChannelUnsubscribe
         );
-        this.radioFacade.join(channel.id);
         this.handleQueuedTrackList();
         this.audioSrc$ = this.radioPresenter.getAudioSrc(
           this.selectedChannel.id,
           this.selectedChannelUnsubscribe
         );
+        this.radioFacade.join(channel.id);
       });
   }
 
