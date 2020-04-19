@@ -66,6 +66,7 @@
     "@ngrx/store-devtools": "^8.6.0",
     "@nrwl/angular": "9.0.3",
     "@pm2/io": "^4.3.2",
+    "@sikora00/nestjs-slack-bot": "^0.1.0",
     "@sikora00/rxjs-overlay": "^2.0.1",
     "@slack/client": "^5.0.2",
     "@slack/events-api": "^2.3.1",
