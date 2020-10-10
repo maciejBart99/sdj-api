@@ -4,6 +4,7 @@ import { Channel } from '../entities/channel.entity';
 export abstract class ChannelFacade {
   abstract channels$: Observable<Channel[]>;
   abstract selectedChannel$: Observable<Channel>;
+  abstract selectedChannelVolume$: Observable<number>;
 
   abstract loadChannels(): void;
 

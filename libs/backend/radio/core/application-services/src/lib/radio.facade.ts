@@ -16,6 +16,7 @@ import { SetChannelDefaultStreamCommand } from './commands/set-channel-default-s
 import { SkipQueuedTrackCommand } from './commands/skip-queued-track/skip-queued-track.command';
 import { ThumbDownCommand } from './commands/thumb-down/thumb-down.command';
 import { ThumbUpCommand } from './commands/thumb-up/thumb-up.command';
+import { VolumeSetCommand } from './commands/volume-set/volume-set.command';
 import { PozdroEvent } from './events/pozdro/pozdro.event';
 import { GetChannelsQuery } from './queries/get-channels/get-channels.query';
 import { GetChannelsReadModel } from './queries/get-channels/get-channels.read-model';
@@ -95,6 +96,10 @@ export class RadioFacade {
   }
 
   thumbUp(command: ThumbUpCommand): Promise<unknown> {
+    return this.commandBus.execute(command);
+  }
+
+  setVolume(command: VolumeSetCommand): Promise<unknown> {
     return this.commandBus.execute(command);
   }
 }

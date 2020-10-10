@@ -39,6 +39,11 @@ export class Channel extends AggregateRoot {
   })
   usersOnline: number;
 
+  @Column({
+    default: 100,
+  })
+  volume: number;
+
   constructor(id: string) {
     super();
     this.id = id;

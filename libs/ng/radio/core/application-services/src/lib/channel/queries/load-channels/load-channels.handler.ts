@@ -5,7 +5,7 @@ import { Channel } from '@sdj/ng/radio/core/domain';
 import { WebSocketClient } from '@sdj/ng/shared/core/application-services';
 import { WebSocketEvents } from '@sdj/shared/domain';
 import { merge, Observable } from 'rxjs';
-import { map, switchMap, withLatestFrom } from 'rxjs/operators';
+import { map, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 import { ChannelPartialState } from '../../+state/channel.reducer';
 import { channelQuery } from '../../+state/channel.selectors';
 import { ChannelDataService } from '../../../ports/channel-data.service';

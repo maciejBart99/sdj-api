@@ -7,6 +7,7 @@ import { WsPlayQueuedTrackHandler } from './events/play-queued-track/ws-play-que
 import { WsPlaySilenceHandler } from './events/play-silence/ws-play-silence.handler';
 import { WsPozdroHandler } from './events/pozdro/ws-pozdro.handler';
 import { WsUserJoinedChannelHandler } from './events/user-joined-channel/ws-user-joined-channel.handler';
+import { WsVolumeChangedHandler } from './events/volume-changed/ws-volume-changed.handler';
 import { ChannelListEmitter } from './gateway/channel-list.emitter';
 import { Gateway } from './gateway/gateway';
 
@@ -17,6 +18,7 @@ const EventsHandlers = [
   WsPlaySilenceHandler,
   WsPozdroHandler,
   WsUserJoinedChannelHandler,
+  WsVolumeChangedHandler,
 ];
 
 @Module({

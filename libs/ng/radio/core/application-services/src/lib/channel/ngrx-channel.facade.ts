@@ -10,6 +10,9 @@ import { SelectChannelService } from './services/select-channel.service';
 export class NgrxChannelFacade implements ChannelFacade {
   channels$ = this.store.pipe(select(channelQuery.channels));
   selectedChannel$ = this.store.pipe(select(channelQuery.selectedChannel));
+  selectedChannelVolume$ = this.store.pipe(
+    select(channelQuery.selectedChannelVolume)
+  );
 
   constructor(
     private selectChannelService: SelectChannelService,

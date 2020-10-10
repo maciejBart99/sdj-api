@@ -10,6 +10,7 @@ import {
   OnDestroy,
   OnInit,
   Output,
+  ViewChild,
 } from '@angular/core';
 import { of } from 'rxjs';
 import { delay, distinctUntilChanged, switchMap } from 'rxjs/operators';

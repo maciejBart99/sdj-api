@@ -27,8 +27,14 @@ const selectedChannel = createSelector(
   (entities, selectedId) => entities[selectedId]
 );
 
+const selectedChannelVolume = createSelector(
+  selectedChannel,
+  (channel) => channel.volume
+);
+
 export const channelQuery = {
   channels,
   channelEntities,
   selectedChannel,
+  selectedChannelVolume,
 };

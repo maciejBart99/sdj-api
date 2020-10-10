@@ -16,6 +16,7 @@ import { SetChannelDefaultStreamHandler } from './commands/set-channel-default-s
 import { SkipQueuedTrackHandler } from './commands/skip-queued-track/skip-queued-track.handler';
 import { ThumbDownHandler } from './commands/thumb-down/thumb-down.handler';
 import { ThumbUpHandler } from './commands/thumb-up/thumb-up.handler';
+import { VolumeSetHandler } from './commands/volume-set/volume-set.handler';
 import { ChannelWillStartHandler } from './events/channel-will-start/channel-will-start.handler';
 import { ChannelWillStopHandler } from './events/channel-will-stop/channel-will-stop.handler';
 import { PlayQueuedTrackHandler } from './events/play-queued-track/play-queued-track.handler';
@@ -41,6 +42,7 @@ export const CommandHandlers = [
   QueueTrackHandler,
   ThumbDownHandler,
   ThumbUpHandler,
+  VolumeSetHandler,
 ];
 
 export const EventHandlers = [

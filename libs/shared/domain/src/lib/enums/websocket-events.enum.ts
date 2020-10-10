@@ -9,4 +9,5 @@ export enum WebSocketEvents {
   queuedTrackList = 'queuedTrackList',
   reconnect = 'reconnect',
   roomIsRunning = 'roomIsRunning',
+  volumeChanged = 'volumeChanged',
 }

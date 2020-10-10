@@ -14,6 +14,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import {
   ExternalRadioFacade,
   QueuedTrackFacade,
+  RadioDataService,
   RadioFacade,
 } from '@sdj/ng/radio/core/application-services';
 import {
@@ -29,8 +30,8 @@ import { WebSocketClient } from '@sdj/ng/shared/core/application-services';
 import { AwesomePlayerComponent } from '@sdj/ng/shared/presentation-players';
 import { User, WebSocketEvents } from '@sdj/shared/domain';
 import { TrackUtil, UserUtils } from '@sdj/shared/utils';
-import { merge, Observable, of, Subject } from 'rxjs';
-import { filter, first, map, takeUntil, tap } from 'rxjs/operators';
+import { forkJoin, merge, Observable, of, Subject } from 'rxjs';
+import { filter, first, map, mergeAll, takeUntil, tap } from 'rxjs/operators';
 import { RadioPresenter } from './radio.presenter';
 
 @UntilDestroy()
@@ -48,6 +49,7 @@ export class RadioComponent implements OnInit, OnDestroy, AfterViewInit {
   toPlayContainer: ElementRef<HTMLElement>;
 
   audioSrc$: Observable<string> = this.radioFacade.audioSource$;
+  volume$: Observable<number> = this.radioService.getVolume();
   currentTrack$ = this.queuedTrackFacade.currentTrack$;
   selectedExternalRadio$ = this.externalRadioFacade.selectedExternalRadio$;
   getThumbnail: (track: Track) => string = TrackUtil.getTrackThumbnail;
@@ -70,7 +72,8 @@ export class RadioComponent implements OnInit, OnDestroy, AfterViewInit {
     private queuedTrackFacade: QueuedTrackFacade,
     private radioFacade: RadioFacade,
     private radioPresenter: RadioPresenter,
-    private webSocket: WebSocketClient
+    private webSocket: WebSocketClient,
+    private radioService: RadioDataService
   ) {}
 
   @HostListener('window:unload')
@@ -91,6 +94,7 @@ export class RadioComponent implements OnInit, OnDestroy, AfterViewInit {
   ngAfterViewInit(): void {
     this.handleSpeeching();
     this.handleSelectedChannelChange();
+    this.handleVolumeChange();
   }
 
   onChangeRadioStation(): void {
@@ -206,5 +210,19 @@ export class RadioComponent implements OnInit, OnDestroy, AfterViewInit {
         untilDestroyed(this)
       )
       .subscribe(() => this.radioFacade.join(this.selectedChannel));
+  }
+
+  private handleVolumeChange() {
+    merge(
+      this.channelFacade.selectedChannelVolume$,
+      this.radioService.getVolume()
+    )
+      .pipe(
+        untilDestroyed(this),
+        map((el) => el ?? 100)
+      )
+      .subscribe(
+        (volume) => (this.playerComponent.player.audio.volume = volume / 100)
+      );
   }
 }

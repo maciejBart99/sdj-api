@@ -4,4 +4,6 @@ export abstract class RadioDataService {
   abstract getPlayDj(): Observable<void>;
 
   abstract getPlayRadio(): Observable<void>;
+
+  abstract getVolume(): Observable<number>;
 }

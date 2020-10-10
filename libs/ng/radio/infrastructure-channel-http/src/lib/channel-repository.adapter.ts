@@ -45,6 +45,7 @@ export class ChannelRepositoryAdapter extends ChannelDataService {
                   defaultStreamUrl: channel?.defaultStreamUrl,
                   name: slackChannel.name,
                   usersOnline: channel ? channel.usersOnline : 0,
+                  volume: channel ? channel.volume ?? 100 : 100,
                 };
               })
             )

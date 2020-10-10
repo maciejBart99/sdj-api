@@ -3,4 +3,5 @@ export interface Channel {
   defaultStreamUrl: string;
   name: string;
   usersOnline: number;
+  volume: number;
 }
